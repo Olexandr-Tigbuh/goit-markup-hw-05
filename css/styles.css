@@ -12,6 +12,8 @@ html {
   --active-accent-color: #188ce8;
   --beckground-color: #2f303a;
   --text-color: #000000;
+  --header-border-color: #ececec;
+  --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -98,6 +100,10 @@ button {
   margin-top: -30px;
 }
 /*-----------------header-----------------------------*/
+.header {
+  border-bottom: 1px solid var(--header-border-color);
+}
+
 .header .logo {
   margin-right: 93px;
 }
@@ -140,7 +146,8 @@ button {
   padding-bottom: 32px;
   display: flex;
   align-items: center;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition);
+  position: relative;
 }
 
 .header-container-line {
@@ -157,9 +164,9 @@ button {
   content: '';
   height: 4px;
   width: 100%;
-  background-color: #2196f3;
+  background-color: var(--active-accent-color);
   border-radius: 2px;
-  bottom: 0px;
+  bottom: -1px;
 }
 
 .logo {
@@ -182,9 +189,7 @@ button {
 
 .contact-icon {
   fill: currentColor;
-  display: block;
   margin-right: 10px;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contakt-icon:hover,
 .contakt-icon:focus {
@@ -235,14 +240,13 @@ button {
   letter-spacing: 0.06em;
   color: var(--light-color);
   background: var(--accent-color);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   margin-left: auto;
   margin-right: auto;
   padding: 10px 32px;
   border: none;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color var(--transition);
 }
 
 .hiro-btn:active,
@@ -291,7 +295,6 @@ button {
 
 .work-img-text {
   position: absolute;
-  z-index: 1;
   font-weight: 700;
   line-height: 1.14;
   text-align: center;
@@ -353,6 +356,7 @@ button {
   align-items: center;
   border-radius: 50%;
   color: var(--social-grey-color);
+  transition: color var(--transition), background-color var(--transition);
 }
 
 .social-item:not(:last-child) {
@@ -361,7 +365,6 @@ button {
 
 .social-icon {
   fill: currentColor;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-link:hover,
@@ -376,14 +379,13 @@ button {
   justify-content: center;
   align-items: center;
   color: var(--social-grey-color);
-  border: 1px solid var(--social-grey-color);
+  border: 1px solid currentColor;
   border-radius: 4px;
   padding: 16px 32px;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition);
 }
 .regular-customer-icon {
   fill: currentColor;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .regular-customer-icon:hover,
 .regular-customer-icon:focus {
@@ -392,7 +394,7 @@ button {
 
 .regular-customer-link:hover,
 .regular-customer-link:focus {
-  border-color: var(--accent-color);
+  color: var(--accent-color);
 }
 
 .regular-customer-item {
@@ -420,7 +422,7 @@ button {
 
 .footer-item-link {
   color: rgba(255, 255, 255, 0.6);
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms var(--transition);
 }
 
 .footer-item:not(:last-child) {
@@ -461,7 +463,7 @@ button {
 .footer .social-link {
   background-color: rgba(255, 255, 255, 0.1);
   color: var(--light-color);
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color var(--transition);
 }
 
 .footer .social-link:hover,
@@ -483,7 +485,8 @@ button {
   color: var(--dark-color);
   background-color: var(--lighter-color);
   border: none;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition), background-color var(--transition),
+    box-shadow var(--transition);
 }
 
 .portfolio-button-item:not(:last-of-type) {
@@ -509,7 +512,8 @@ button {
   width: calc(100% / 3 - 30px);
 }
 
-.projects-item:hover .projects-item-text {
+.projects-link:hover .projects-item-text,
+.projects-link:focus .projects-item-text {
   transform: translateY(0%);
 }
 .projects-item-wrap {
@@ -546,14 +550,14 @@ button {
 }
 
 .projects-wrapper {
-  border: 1px solid #eeeeee;
+  border: 1px solid var(--lighter-color);
   padding: 20px 24px;
 }
 
 .projects-link {
   display: flex;
   flex-direction: column;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow var(--transition);
 }
 
 .projects-link:hover,
@@ -573,7 +577,7 @@ button {
 }
 
 .backdrop.is-hidden .modal {
-  transform: scale(0.5);
+  transform: translate(-50%, -50%) scale(0.5);
 }
 
 .modal {
@@ -593,7 +597,7 @@ button {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0, 1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: transparent;
   display: flex;
   align-items: center;
